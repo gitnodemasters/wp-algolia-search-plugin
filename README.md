@@ -1,0 +1,1 @@
+# wp-algolia-search-plugin
