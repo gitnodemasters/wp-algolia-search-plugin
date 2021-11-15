@@ -206,8 +206,17 @@ final class Algolia_Posts_Index extends Algolia_Index {
 		$shared_attributes['post_modified']       = get_post_modified_time( 'U', false, $post );
 		$shared_attributes['comment_count']       = (int) $post->comment_count;
 		$shared_attributes['menu_order']          = (int) $post->menu_order;
-		$shared_attributes['exclude_from_search'] = (bool) $post->exclude_from_search;
+
+		//custom fields for algolia
+		$shared_attributes['exclude_from_search'] = false;
+		$shared_attributes['background']          = $post->background;
+		$shared_attributes['horiaontal_bar_color']    = $post->horiaontal_bar_color;
 		$shared_attributes['external_url']        = $post->external_url;
+		$shared_attributes['resource_excerpt']    = $post->resource_excerpt;
+		$shared_attributes['news_image']    = $post->news_image;
+		$shared_attributes['blog_image_for_algolia']    = $post->blog_image_for_algolia;
+		$shared_attributes['excerpt']    = $post->excerpt;
+		
 
 		$author = get_userdata( $post->post_author );
 		if ( $author ) {
