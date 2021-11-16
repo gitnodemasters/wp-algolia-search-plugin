@@ -204,12 +204,14 @@ final class Algolia_Searchable_Posts_Index extends Algolia_Index {
 		//custom fields for algolia
 		$shared_attributes['exclude_from_search'] = false;
 		$shared_attributes['background']          = $post->background;
-		$shared_attributes['horiaontal_bar_color']    = $post->horiaontal_bar_color;
+		$shared_attributes['horizontal_bar_color']    = $post->horizontal_bar_color;
 		$shared_attributes['external_url']        = $post->external_url;
 		$shared_attributes['resource_excerpt']    = $post->resource_excerpt;
-		$shared_attributes['news_image']    = $post->news_image;
-		$shared_attributes['blog_image_for_algolia']    = $post->blog_image_for_algolia;
 		$shared_attributes['excerpt']    = $post->excerpt;
+		$imageNews = get_field('news_image', $post->ID); 
+		$shared_attributes['news_image'] = $imageNews ? $imageNews['url'] : '';
+		$imageBlog = get_field('blog_image_for_algolia', $post->ID); 
+		$shared_attributes['blog_image_for_algolia'] = $imageBlog ? $imageBlog['url'] : '';
 		
 		$author = get_userdata( $post->post_author );
 		if ( $author ) {
